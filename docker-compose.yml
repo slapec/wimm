@@ -1,0 +1,40 @@
+version: '3'
+
+volumes:
+  db:
+  django_static:
+
+services:
+  db:
+    image: postgres:12.1
+    environment:
+      POSTGRES_USER: wimm
+      POSTGRES_PASSWORD: wimm
+      POSTGRESS_DB: wimm
+    volumes:
+      - db:/var/lib/postgresql/data
+    restart: unless-stopped
+
+  django:
+    image: slapec/wimm:latest
+    build: .
+    volumes:
+      - ./settings/prod.py:/opt/wimm/wimm/settings.py
+      - django_static:/var/www/
+    environment:
+      DJANGO_SETTINGS_MODULE: wimm.settings
+    command: ["bash", "run.sh"]
+    depends_on:
+      - db
+    restart: unless-stopped
+
+  nginx:
+    image: nginx:1.17.5
+    ports:
+      - 12120:80
+    volumes:
+      - ./nginx.conf:/etc/nginx/nginx.conf
+      - django_static:/var/www/
+    depends_on:
+      - django
+    restart: unless-stopped

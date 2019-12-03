@@ -172,7 +172,7 @@ crashlytics-build.properties
 fabric.properties
 .idea/
 
-settings.py
 dev_settings.py
 *.sqlite3
 wimm.ini
+/settings/prod.py

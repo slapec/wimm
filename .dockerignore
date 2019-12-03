@@ -1,0 +1,6 @@
+.git
+.python-version
+.idea
+docker-compose.yml
+nginx.conf
+settings/
