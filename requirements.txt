@@ -1,7 +1,7 @@
 -e git+https://github.com/PetrDlouhy/django-qsstats-magic.git@205d9a85f1a0174181c88e90940bcdfad14e6e82#egg=django-qsstats-magic
 django-taggit-serializer==0.1.5
 django-taggit==0.20.2
-django==1.9.6
+django==2.2.24
 djangorestframework==3.6.3
 python-dateutil==2.5.3
 pytz==2016.4
